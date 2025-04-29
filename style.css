@@ -1,0 +1,106 @@
+body {
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+    background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+    margin: 0;
+    padding: 0;
+    color: #22223b;
+}
+#book-app {
+    max-width: 1200px;
+    margin: 40px auto;
+    background: #fff;
+    box-shadow: 0 6px 32px 0 rgba(60, 60, 120, 0.10);
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 0;
+}
+/* Removed header and progress bar styling */
+
+main {
+    display: flex;
+    min-height: 600px;
+    position: relative;
+}
+#toc {
+    width: 280px;
+    background: #f3f0ff;
+    border-right: 2px solid #e0e7ff;
+    padding: 30px 18px 30px 30px;
+    box-sizing: border-box;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    flex-shrink: 0;
+    z-index: 2;
+}
+#toc h2 {
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+    color: #6d28d9;
+}
+#toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+#toc-list li {
+    margin-bottom: 12px;
+}
+#toc-list li.active a {
+    font-weight: bold;
+    color: #7c3aed;
+}
+#toc-list a.done {
+    color: #22a06b !important;
+    font-weight: 600;
+    position: relative;
+}
+#toc-list .check {
+    color: #22a06b;
+    font-size: 1.1em;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+#toc-list a {
+    color: #37306b;
+    text-decoration: none;
+    font-size: 1rem;
+    display: block;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+}
+#toc-list a:hover {
+    background: #e9d8fd;
+    color: #5a189a;
+}
+#content {
+    flex: 1;
+    padding: 36px 40px;
+    background: #f8fafc;
+    min-height: 600px;
+    overflow-y: auto;
+}
+#chapter-content {
+    background: #fff;
+    border-radius: 14px;
+    padding: 30px 32px;
+    box-shadow: 0 2px 12px 0 rgba(127, 156, 245, 0.08);
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+@media (max-width: 900px) {
+    main {
+        flex-direction: column;
+    }
+    #toc {
+        width: 100%;
+        border-right: none;
+        border-bottom: 2px solid #e0e7ff;
+        padding: 20px 12px;
+    }
+    #content {
+        padding: 20px 12px;
+    }
+}
