@@ -5,36 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Python Developer's Guide to LLMs</title>
     <link rel="stylesheet" href="style.css" />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/zero-md@3?register"></script>
 </head>
 <body>
-    <div id="book-app">
+    <div id="book-app" class="theme-light">
         <header>
             <h1>The Python Developer's Guide to Building Intelligent Assistants with LLMs</h1>
             <div class="options">
                 <label>
-                    <input type="checkbox" id="show-research-notes">
+                    <input type="checkbox" id="show-research-notes" checked>
                     Show Research Notes
                 </label>
+                <button id="settings-toggle" class="settings-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path
+                            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                        </path>
+                    </svg>
+                </button>
             </div>
         </header>
+        <div id="settings-panel" class="settings-panel">
+            <h3>Settings</h3>
+            <div class="setting-group">
+                <label>Font Size</label>
+                <div class="setting-controls">
+                    <button id="font-size-smaller" class="setting-btn">A-</button>
+                    <span id="font-size-display">Medium</span>
+                    <button id="font-size-larger" class="setting-btn">A+</button>
+                </div>
+            </div>
+            <div class="setting-group">
+                <label>Theme</label>
+                <div class="setting-controls">
+                    <button id="theme-light" class="setting-btn theme-btn active">Light</button>
+                    <button id="theme-sepia" class="setting-btn theme-btn">Sepia</button>
+                    <button id="theme-dark" class="setting-btn theme-btn">Dark</button>
+                </div>
+            </div>
+        </div>
         <main>
             <aside id="toc">
                 <h2>Table of Contents</h2>
-                <ul id="toc-list">
-                    <li class="active"><a href="#intro" data-chapter="intro">Introduction</a></li>
-                    <li><a href="#chapter1" data-chapter="chapter1">Chapter 1: What Are LLMs and How Do They Work?</a></li>
-                    <li><a href="#chapter2" data-chapter="chapter2">Chapter 2: The LLM Playground: Use Cases and Possibilities</a></li>
-                    <li><a href="#chapter3" data-chapter="chapter3">Chapter 3: The Problem with Statelessness: Introducing Agents</a>
-                    </li>
-                    <li><a href="#chapter4" data-chapter="chapter4">Chapter 4: Building Your First Agent in Python</a></li>
-                    <li><a href="#chapter5" data-chapter="chapter5">Chapter 5: Thinking Together: Multi-Agent Systems</a></li>
-                    <li><a href="#chapter6" data-chapter="chapter6">Chapter 6: Remembering the Past: Context and Memory</a></li>
-                    <li><a href="#chapter7" data-chapter="chapter7">Chapter 7: Grounding LLMs in Reality: RAG and CAG</a></li>
-                    <li><a href="#chapter8" data-chapter="chapter8">Chapter 8: Making LLMs Your Own: Fine-Tuning Explained</a></li>
-                    <li><a href="#chapter9" data-chapter="chapter9">Chapter 9: Choosing Your Tools: LLM Frameworks Deep Dive</a></li>
-                    <li><a href="#chapter10" data-chapter="chapter10">Chapter 10: The Evolving Landscape and the Future</a></li>
-                    <li><a href="#conclusion" data-chapter="conclusion">Conclusion</a></li>
-                </ul>
+                <ul id="toc-list"></ul>
             </aside>
             <section id="content">
                 <div class="nav-controls">
@@ -42,13 +57,51 @@
                     <span id="current-chapter-title">Introduction</span>
                     <button id="next-chapter" class="nav-btn">Next &rarr;</button>
                 </div>
-                <article id="chapter-content">
-                    <!-- Contents will be loaded dynamically -->
-                </article>
+                <div id="chapter-content" class="markdown-content">
+                    <zero-md id="chapter-md">
+                        <template>
+                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@5/github-markdown.min.css">
+                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11/styles/github.min.css">
+                            <link rel="stylesheet" media="(prefers-color-scheme:dark)"
+                                href="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11/styles/github-dark.min.css">
+                            <style>
+                                .markdown-body {
+                                    padding: 0;
+                                    font-family: 'Segoe UI', 'Roboto', sans-serif;
+                                }
+                
+                                .markdown-body pre {
+                                    background-color: #f6f8fa;
+                                    border-radius: 6px;
+                                }
+                
+                                .markdown-body code {
+                                    font-family: 'Courier New', monospace;
+                                }
+                            </style>
+                        </template>
+                    </zero-md>
+                </div>
                 <div class="research-notes-container" id="research-notes-container">
                     <h3>Research Notes</h3>
-                    <div id="research-notes-content">
-                        <!-- Research notes will be loaded dynamically -->
+                    <div id="research-notes-content" class="markdown-content">
+                        <zero-md id="research-md">
+                            <template>
+                                <link rel="stylesheet"
+                                    href="https://cdn.jsdelivr.net/npm/github-markdown-css@5/github-markdown.min.css">
+                                <link rel="stylesheet"
+                                    href="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11/styles/github.min.css">
+                                <link rel="stylesheet" media="(prefers-color-scheme:dark)"
+                                    href="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11/styles/github-dark.min.css">
+                                <style>
+                                    .markdown-body {
+                                        padding: 0;
+                                        font-family: 'Segoe UI', 'Roboto', sans-serif;
+                                        background-color: transparent;
+                                    }
+                                </style>
+                            </template>
+                        </zero-md>
                     </div>
                 </div>
                 <div class="nav-controls bottom">
@@ -58,164 +111,6 @@
             </section>
         </main>
     </div>
-    
-    <!-- Hidden content sections -->
-    <div id="chapters" style="display:none;">
-        <!-- Introduction -->
-        <div id="intro-content">
-            <h1>The Python Developer's Guide to Building Intelligent Assistants with LLMs</h1>
-            <h2>Introduction</h2>
-            <p>Welcome, fellow Python developer, to the rapidly evolving and endlessly fascinating world of Large Language
-                Models (LLMs)! If you've been observing the AI landscape, you've undoubtedly witnessed the meteoric rise of
-                models like ChatGPT, Claude, and Gemini, capable of generating human-like text, translating languages,
-                writing code, and engaging in surprisingly coherent conversations. This isn't just another tech trend; it's
-                a paradigm shift, opening up possibilities previously confined to science fiction.</p>
-            <p>But beyond the initial awe, a crucial question arises for developers like us: How do we move from simply
-                <em>using</em> these models to actively <em>building</em> with them? How can we harness their power to
-                create truly intelligent, useful, and perhaps even personalized applications?</p>
-            <p>This book is designed to answer exactly that. We'll embark on a practical journey, demystifying the core
-                concepts behind LLMs and equipping you with the knowledge and skills to build sophisticated AI applications
-                using the language you already know and love: Python. Forget dense academic theory; our focus will be on
-                hands-on implementation, clear explanations, and real-world relevance.</p>
-        </div>
-    
-        <!-- Chapter 1 -->
-        <div id="chapter1-content">
-            <h1>Chapter 1: Unveiling the Magic - How Large Language Models Work</h1>
-            <p>Welcome, Python developer, to the fascinating world of Large Language Models (LLMs)! You've likely heard the
-                buzzwords – GPT, Llama, Gemini, AI – and perhaps even interacted with chatbots or code assistants powered by
-                this technology. But what exactly <em>are</em> these models, and how do they perform their seemingly magical
-                feats of text generation, translation, and even code writing? This book is your guide to not just
-                understanding LLMs but harnessing their power within your Python projects. Our journey will be a practical
-                one, culminating in building your very own AI assistant – a dream project for many developers!</p>
-            <p>This first chapter pulls back the curtain. We'll demystify LLMs, tracing their evolution and exploring the
-                core concepts that make them tick. Forget impenetrable jargon; we'll focus on intuitive understanding,
-                setting a solid foundation for the exciting applications and techniques we'll explore later. Think of this
-                as learning the fundamental physics before building your spaceship.</p>
-            <h2>The Core Idea: Predicting the Next Word</h2>
-            <p>At its heart, a Large Language Model is a sophisticated prediction engine. Imagine you're typing a sentence:
-                "The quick brown fox jumps over the lazy..." What word comes next? You probably thought "dog." LLMs operate
-                on a similar, albeit vastly more complex, principle. They are neural networks trained on immense amounts of
-                text data (think large swathes of the internet, books, articles – hence the "Large" in LLM) with a primary
-                objective: <strong>predict the next word (or, more accurately, the next <em>token</em>) in a
-                    sequence.</strong></p>
-            <p>This simple-sounding task, when performed at scale with powerful architectures, unlocks remarkable
-                capabilities. By learning the statistical patterns of how words follow each other – grammar, facts,
-                reasoning structures, conversational styles, even coding conventions found in the training data – the model
-                becomes capable of generating coherent and contextually relevant text. It's not magic, but rather incredibly
-                sophisticated pattern matching learned from trillions of examples.</p>
-        </div>
-    
-        <!-- Chapter 1 Research Notes -->
-        <div id="chapter1-research-notes">
-            <h2>Research Notes for Chapter 1</h2>
-            <p>These are the research notes for the LLM fundamentals chapter, including key points about Transformer
-                architecture, attention mechanisms, and emergent abilities.</p>
-            <ul>
-                <li>Transformers process all tokens in parallel (unlike RNNs)</li>
-                <li>Self-attention allows models to understand relationships between words</li>
-                <li>Training involves predicting the next token in extremely large datasets</li>
-                <li>Limitations include statelessness, hallucinations, and context window constraints</li>
-            </ul>
-        </div>
-    
-        <!-- Chapter 2 -->
-        <div id="chapter2-content">
-            <h1>Chapter 2: The LLM Playground: Use Cases and Possibilities</h1>
-            <p>In the previous chapter, we learned what makes LLMs tick - their architecture, training, and fundamental
-                capabilities. Now, let's explore the practical landscape: What can these models actually do? How are they
-                being used across industries? And most importantly, what could they do for your projects?</p>
-            <p>Understanding the diverse applications of LLMs not only broadens your perspective but helps you identify
-                opportunities to enhance your own applications. Even our target project - a personal AI assistant - will
-                ultimately combine multiple capabilities we'll explore here.</p>
-            <h2>Content Generation: Beyond Simple Text</h2>
-            <p>Perhaps the most obvious application of LLMs is generating human-like text. But this capability branches into
-                numerous specialized use cases:</p>
-            <ul>
-                <li><strong>Copywriting and Marketing</strong>: Generating product descriptions, ad copy, email campaigns,
-                    and social media posts with specific tones and messaging.</li>
-                <li><strong>Creative Writing</strong>: Crafting stories, poems, scripts, and other creative content, either
-                    from scratch or by expanding on a human writer's ideas.</li>
-                <li><strong>Documentation</strong>: Creating technical documentation, help articles, and tutorials based on
-                    product specifications or code.</li>
-                <li><strong>Personalized Communication</strong>: Drafting emails, messages, or reports tailored to specific
-                    audiences or contexts.</li>
-            </ul>
-        </div>
-    
-        <!-- Chapter 2 Research Notes -->
-        <div id="chapter2-research-notes">
-            <h2>Research Notes for Chapter 2: LLM Applications</h2>
-            <p><strong>Overview:</strong> LLMs are advanced AI systems trained on vast text data to understand, interpret,
-                and generate human-like text. They power numerous applications across various industries.</p>
-            <p><strong>Top Applications:</strong></p>
-            <ol>
-                <li><strong>Content Generation:</strong> Creating articles, blog posts, marketing copy, video scripts,
-                    social media updates, adapting styles/tones.</li>
-                <li><strong>Translation and Localization:</strong> Accurate, context-aware translation across many
-                    languages, adapting content culturally (idioms, customs, formats).</li>
-                <li><strong>Search and Recommendation:</strong> Understanding natural language query intent, delivering
-                    relevant results, generating summaries.</li>
-                <li><strong>Virtual Assistants:</strong> Understanding commands, performing tasks, providing information,
-                    facilitating conversations, automating customer support.</li>
-                <li><strong>Code Development:</strong> Assisting in writing, reviewing, debugging code; generating
-                    snippets/functions; suggesting completions.</li>
-            </ol>
-        </div>
-    
-        <!-- More chapters would go here -->
-        <div id="chapter3-content">
-            <h1>Chapter 3: The Problem with Statelessness: Introducing Agents</h1>
-            <p>Coming soon...</p>
-        </div>
-    
-        <div id="chapter4-content">
-            <h1>Chapter 4: Building Your First Agent in Python</h1>
-            <p>Coming soon...</p>
-        </div>
-    
-        <div id="chapter5-content">
-            <h1>Chapter 5: Thinking Together: Multi-Agent Systems</h1>
-            <p>Coming soon...</p>
-        </div>
-    
-        <div id="chapter6-content">
-            <h1>Chapter 6: Remembering the Past: Context and Memory</h1>
-            <p>Coming soon...</p>
-        </div>
-    
-        <div id="chapter7-content">
-            <h1>Chapter 7: Grounding LLMs in Reality: RAG and CAG</h1>
-            <p>Coming soon...</p>
-        </div>
-    
-        <div id="chapter8-content">
-            <h1>Chapter 8: Making LLMs Your Own: Fine-Tuning Explained</h1>
-            <p>Coming soon...</p>
-        </div>
-    
-        <div id="chapter9-content">
-            <h1>Chapter 9: Choosing Your Tools: LLM Frameworks Deep Dive</h1>
-            <p>Coming soon...</p>
-        </div>
-    
-        <div id="chapter10-content">
-            <h1>Chapter 10: The Evolving Landscape and the Future</h1>
-            <p>Coming soon...</p>
-        </div>
-    
-        <!-- Conclusion -->
-        <div id="conclusion-content">
-            <h1>Conclusion</h1>
-            <p>Congratulations on completing this journey through the world of LLMs and intelligent assistants! We've
-                covered a tremendous amount of ground, from understanding the fundamental architecture of these powerful
-                models to building sophisticated applications that leverage their capabilities.</p>
-            <p>Your personal AI assistant project now serves as both a tangible outcome of your learning and a foundation
-                for future exploration. As LLM technology continues to evolve at a rapid pace, the skills you've developed
-                throughout this book will remain relevant and valuable.</p>
-        </div>
-    </div>
-
     <script src="book.js"></script>
 </body>
 </html>

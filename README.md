@@ -1,41 +1,64 @@
-# The Python Developer's Guide to Building Intelligent Assistants with LLMs
+# Python Developer's Guide to LLMs Book Viewer
 
-Welcome to the official repository for **The Python Developer's Guide to Building Intelligent Assistants with LLMs**! This interactive book and website will help you master the latest techniques in Large Language Models (LLMs), agents, RAG, fine-tuning, and more, with hands-on Python code and practical examples.
+This is a simple web-based viewer for "The Python Developer's Guide to Building Intelligent Assistants with LLMs" book.
 
-## 🚀 Live Website
-You can view the book as a website (once deployed) via GitHub Pages or your preferred static hosting provider.
+## Features
 
-## 📚 Contents
-- **Introduction:** Demystifying LLMs
-- **Chapters 1-10:** Fundamentals, applications, agents, memory, RAG, context management, fine-tuning, frameworks, future trends
-- **Conclusion:** Next steps and responsible AI
+- View all chapters and research notes
+- Simple navigation between chapters
+- Toggle research notes visibility
+- Responsive design for different screen sizes
 
-## 🖥️ How to Run Locally
-1. Clone the repo:
-   ```sh
-   git clone https://github.com/sazag24/GenAI.git
-   ```
-2. Open `index.html` in your browser. No server required!
+## Getting Started
 
-## 🛠️ Tech Stack
-- Pure HTML, CSS, and JavaScript (no build step)
-- [marked.js](https://github.com/markedjs/marked) for Markdown rendering
-- Python code examples use: LangChain, Hugging Face Transformers, LlamaIndex, PEFT, Datasets, TRL, and more
+### Prerequisites
 
-## 🌟 Features
-- Interactive Table of Contents
-- Clean, responsive two-column layout
-- Visual indicators for completed chapters
-- Modern LLM techniques and best practices
-- Ready-to-run code snippets and diagrams
+- Python 3.6 or higher
 
-## 📄 License
-This project is licensed under the MIT License.
+### Running the Application
 
-## 🙏 Acknowledgements
-- Inspired by the open-source LLM and agentic AI community
-- Uses open libraries and frameworks from Python and JavaScript ecosystems
+1. Start the custom HTTP server with CORS support:
 
----
+```bash
+python server.py
+```
 
-**Happy learning and building! If you find this guide helpful, please star the repo and share your feedback.**
+2. Open your browser and navigate to:
+
+```
+http://localhost:8000/simple.html
+```
+
+This simpler version displays the book content correctly with proper markdown rendering.
+
+You can also view the more complex version with additional features:
+
+```
+http://localhost:8000/index.html
+```
+
+## Troubleshooting
+
+If you're having issues with CORS (Cross-Origin Resource Sharing) errors:
+
+1. Make sure you're accessing the files through the HTTP server and not directly from the file system
+2. Check that the server is running on port 8000
+3. Clear your browser cache if you're still experiencing issues
+
+## Structure
+
+- `/docs/` - Contains all book chapters and research notes in markdown format
+- `simple.html` - Basic version of the book viewer 
+- `index.html` - Full-featured book viewer
+- `server.py` - Custom HTTP server with CORS support
+
+## Browser Support
+
+The viewer has been tested on:
+- Chrome
+- Firefox
+- Edge
+
+## Notes
+
+The viewer uses zero-md web component to render markdown files into HTML. This requires loading content through an HTTP server due to CORS restrictions in modern browsers.
