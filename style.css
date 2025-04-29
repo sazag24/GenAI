@@ -1,0 +1,220 @@
+body {
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+    background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+    margin: 0;
+    padding: 0;
+    color: #22223b;
+}
+#book-app {
+    max-width: 1200px;
+    margin: 40px auto;
+    background: #fff;
+    box-shadow: 0 6px 32px 0 rgba(60, 60, 120, 0.10);
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 0;
+}
+
+header {
+    background: #7c3aed;
+    color: white;
+    padding: 20px 40px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.options {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.options label {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.options input[type="checkbox"] {
+    margin-right: 6px;
+}
+
+main {
+    display: flex;
+    min-height: 600px;
+    position: relative;
+}
+#toc {
+    width: 280px;
+    background: #f3f0ff;
+    border-right: 2px solid #e0e7ff;
+    padding: 30px 18px 30px 30px;
+    box-sizing: border-box;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    flex-shrink: 0;
+    z-index: 2;
+}
+#toc h2 {
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+    color: #6d28d9;
+}
+#toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+#toc-list li {
+    margin-bottom: 12px;
+}
+#toc-list li.active a {
+    font-weight: bold;
+    color: #7c3aed;
+}
+#toc-list a.done {
+    color: #22a06b !important;
+    font-weight: 600;
+    position: relative;
+}
+#toc-list .check {
+    color: #22a06b;
+    font-size: 1.1em;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+#toc-list a {
+    color: #37306b;
+    text-decoration: none;
+    font-size: 1rem;
+    display: block;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+}
+#toc-list a:hover {
+    background: #e9d8fd;
+    color: #5a189a;
+}
+#content {
+    flex: 1;
+    padding: 36px 40px;
+    background: #f8fafc;
+    min-height: 600px;
+    overflow-y: auto;
+}
+#chapter-content {
+    background: #fff;
+    border-radius: 14px;
+    padding: 30px 32px;
+    box-shadow: 0 2px 12px 0 rgba(127, 156, 245, 0.08);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.nav-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background: white;
+    border-radius: 10px;
+    padding: 12px 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.nav-controls.bottom {
+    margin-top: 30px;
+    margin-bottom: 0;
+    justify-content: center;
+    gap: 20px;
+}
+
+.nav-btn {
+    background: #7c3aed;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.nav-btn:hover {
+    background: #6d28d9;
+}
+
+.nav-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+#current-chapter-title {
+    font-weight: 600;
+    color: #4a5568;
+}
+
+.research-notes-container {
+    background: #fff8e6;
+    border-radius: 14px;
+    padding: 20px 25px;
+    margin-top: 25px;
+    border-left: 4px solid #f59e0b;
+    display: none;
+}
+
+.research-notes-container h3 {
+    color: #92400e;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+#research-notes-content {
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+    main {
+        flex-direction: column;
+    }
+    #toc {
+        width: 100%;
+        border-right: none;
+        border-bottom: 2px solid #e0e7ff;
+        padding: 20px 12px;
+        height: auto;
+        position: relative;
+    }
+    #content {
+        padding: 20px 12px;
+    }
+    
+    header {
+        padding: 15px 20px;
+    }
+    
+    header h1 {
+        font-size: 1.3rem;
+    }
+    
+    .nav-controls {
+        padding: 10px;
+    }
+    
+    .nav-btn {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+}
